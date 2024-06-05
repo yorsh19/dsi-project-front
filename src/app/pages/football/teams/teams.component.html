@@ -1,0 +1,66 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Teams</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <mat-form-field class="col-2">
+        <mat-label>Areas:</mat-label>
+        <mat-select [(ngModel)]="area" (ngModelChange)="getCompetitionList()">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let item of areas" [value]="item.id">{{
+            item.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>Competition:</mat-label>
+        <mat-select
+          [(ngModel)]="competition"
+          (ngModelChange)="getTeams()"
+          [disabled]="competitions.length == null || competitions.length == 0"
+        >
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let item of competitions" [value]="item.id">{{
+            item.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <table
+        class="table table-sm table-hover dataTable dtr-inline text-center"
+      >
+        <thead>
+          <th>Crest</th>
+          <th>Name</th>
+          <th>Venue</th>
+          <th>Coach</th>
+          <th>Founded</th>
+          <th>Short Name</th>
+          <th>Actions</th>
+        </thead>
+        <tbody *ngFor="let team of teams">
+          <td><img [src]="team.crest" style="height: 32px; width: 32px" /></td>
+          <td>{{ team.name }}</td>
+          <td>{{ team.venue }}</td>
+          <td>{{ team.coach.name }}</td>
+          <td>{{ team.founded }}</td>
+          <td>{{ team.tla }}</td>
+          <td>
+            <button class="btn" (click)="viewPlayers(team)">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <button class="nav-link btn btn-primary" (click)="home()" *ngIf="isHome">
+        Inicio
+      </button>
+    </li>
+  </ul>
+
+  <div
+    class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2 justify-content-center"
+  >
+    <ul class="navbar-nav">
+      <li class="nav-item d-none d-md-block">
+        <span class="navbar-text" style="font-size: 20px">{{
+          nombreProyecto
+        }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown btn-light text-center btn-drop">
+        <a class="nav-link link-drop" (click)="toggleDropdown()">
+          <i class="fa-solid fa-user"></i>
+          <span class="d-none d-md-inline"> {{ nombrePersonal }}</span>
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-center"
+          [class.show]="isDropdownOpen"
+        >
+          <button class="dropdown-item">Perfil</button>
+          <button class="dropdown-item">Cambiar Contraseña</button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" (click)="logout()">
+            Cerrar Sesión
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

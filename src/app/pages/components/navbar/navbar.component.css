@@ -1,0 +1,22 @@
+.btn-drop {
+    border-radius: 10px;
+    width: 160px;
+}
+
+.link-drop {
+    color: black !important;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 576px) {
+    .btn-drop {
+        width: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .btn-drop {
+        width: 60px;
+    }
+}

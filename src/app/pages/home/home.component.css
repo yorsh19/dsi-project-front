@@ -1,0 +1,15 @@
+.module-link {
+    text-decoration: none;
+    color: black;
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+}
+
+.module-link:hover {
+    transform: scale(1.05);
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+  

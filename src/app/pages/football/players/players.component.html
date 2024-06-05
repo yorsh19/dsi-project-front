@@ -1,0 +1,24 @@
+<p>players works!</p>
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Players</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="content">
+    <div class="container-fluid">
+      <div *ngFor="let player of players">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ player.player.name }}</h5>
+            <p class="card-text">{{ player.team.name }}</p>
+            <p class="card-text">Goals: {{ player.goals }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

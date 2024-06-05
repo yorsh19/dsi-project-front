@@ -1,0 +1,36 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Competitions</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <mat-form-field class="col-2">
+        <mat-label>Paises:</mat-label>
+        <mat-select
+          [(ngModel)]="competition"
+          (ngModelChange)="getCompetitionList()"
+        >
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let item of areas" [value]="item.id">{{
+            item.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div *ngFor="let competition of competitions">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ competition?.name }}</h5>
+          <p class="card-text">{{ competition?.area.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

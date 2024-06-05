@@ -1,0 +1,35 @@
+<div class="content">
+  <div class="modal-header">
+    <h2 class="modal-title">Players of the team</h2>
+    <button
+      class="btn p-0 m-0"
+      matTooltip="Close"
+      [matTooltipPosition]="'above'"
+      (click)="dismiss()"
+    >
+      <span>
+        <i class="material-icons">close</i>
+      </span>
+    </button>
+  </div>
+  <div style="overflow-y: auto; max-height: 80vh">
+    <div class="modal-body">
+        <div class="row">
+            <table class="table table-sm table-hover dataTable dtr-inline text-center">
+              <thead>
+                <th>Date of Birth</th>
+                <th>Name</th>
+                <th>Nationality</th>
+                <th>Position</th>
+              </thead>
+              <tbody *ngFor="let player of param">
+                <td>{{ player.dateOfBirth }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.nationality }}</td>
+                <td>{{ player.position }}</td>
+              </tbody>
+            </table>
+          </div>
+    </div>
+  </div>
+</div>

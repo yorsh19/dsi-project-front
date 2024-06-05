@@ -1,0 +1,116 @@
+<app-navbar></app-navbar>
+
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Weather Dashboard</h1>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <mat-form-field class="col-sm-2">
+        <mat-label>Ciudad:</mat-label>
+        <input matInput [(ngModel)]="city" required readonly />
+      </mat-form-field>
+      <div class="col-sm-2">
+        <button class="btn btn-primary" (click)="getCurrentWeather()">
+          Buscar
+        </button>
+      </div>
+      <p>{{ weather }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>25°C</h3>
+            <p>Current Temperature</p>
+          </div>
+          <div class="icon">
+            <i class="fas fa-thermometer-half"></i>
+          </div>
+          <a href="#" class="small-box-footer"
+            >More info <i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>60%</h3>
+            <p>Humidity</p>
+          </div>
+          <div class="icon">
+            <i class="fas fa-tint"></i>
+          </div>
+          <a href="#" class="small-box-footer"
+            >More info <i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-warning">
+          <div class="inner">
+            <h3>15 km/h</h3>
+            <p>Wind Speed</p>
+          </div>
+          <div class="icon">
+            <i class="fas fa-wind"></i>
+          </div>
+          <a href="#" class="small-box-footer"
+            >More info <i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3>1015 hPa</h3>
+            <p>Pressure</p>
+          </div>
+          <div class="icon">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+          <a href="#" class="small-box-footer"
+            >More info <i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Temperature Forecast</h3>
+            <div class="card-tools">
+              <button
+                type="button"
+                class="btn btn-tool"
+                data-card-widget="collapse"
+              >
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <canvas
+              id="temperatureChart"
+              style="
+                min-height: 250px;
+                height: 250px;
+                max-height: 250px;
+                max-width: 100%;
+              "
+            ></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
