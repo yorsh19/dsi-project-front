@@ -1,24 +1,38 @@
-<p>players works!</p>
+<div *ngIf="isLoading" class="overlay">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
 <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0">Players</h1>
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Goleadores por Competición</h1>
+      </div>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-2">
+        <mat-label>Competición:</mat-label>
+        <mat-select [(ngModel)]="competition" (ngModelChange)="getScorers()">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let item of competitions" [value]="item.id">{{
+            item.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container-fluid">
+    <div *ngFor="let player of players">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><strong>Jugador: </strong>{{ player.player.name }}</h5>
+          <p class="card-text"><strong>Equipo: </strong>{{ player.team.name }} <img [src]="player.team.crest" style="height: 32px; width: 32px;"></p>
+          <p class="card-text"><strong>N° Goles: </strong> {{ player.goals }}</p>
+          <p class="card-text"><strong>N° Asistencias: </strong> {{ player.assists }}</p>
         </div>
       </div>
     </div>
   </div>
-  
-  <div class="content">
-    <div class="container-fluid">
-      <div *ngFor="let player of players">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{ player.player.name }}</h5>
-            <p class="card-text">{{ player.team.name }}</p>
-            <p class="card-text">Goals: {{ player.goals }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>

@@ -11,6 +11,7 @@ export class CompetitionsComponent implements OnInit {
   competitions: any[] = [];
   areas: any[] = [];
   competition: any;
+  isLoading = false;
 
   constructor(private footballService: FootballService) { }
 

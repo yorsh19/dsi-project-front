@@ -10,6 +10,7 @@ export class WeatherComponent implements OnInit {
 
   city: any;
   weather: any;
+  isLoading = false;
 
   constructor(private weatherService: WeatherService) { }
 
@@ -17,8 +18,10 @@ export class WeatherComponent implements OnInit {
   }
 
   getCurrentWeather(){
+    this.isLoading = true;
     this.weatherService.getCurrentWeather(this.city).subscribe(data => {
       this.weather = data;
+      this.isLoading = false;
     })
   }
 }

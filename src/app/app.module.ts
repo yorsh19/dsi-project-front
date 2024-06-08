@@ -30,7 +30,7 @@ import { ViewPlayersComponent } from './pages/football/teams/view-players/view-p
     TeamsComponent,
     PlayersComponent,
     MatchesComponent,
-    ViewPlayersComponent
+    ViewPlayersComponent,
   ],
   imports: [
     BrowserModule,

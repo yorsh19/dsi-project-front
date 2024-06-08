@@ -19,6 +19,9 @@ const routes: Routes = [
   {
     path: 'football', component: FootballComponent, children: [
       {
+        path: '', redirectTo: 'teams', pathMatch: 'full'
+      },
+      {
         path: 'competitions', component: CompetitionsComponent
       },
       {

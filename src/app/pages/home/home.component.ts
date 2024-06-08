@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
       descripcionModulo: 'Remove BG',
       icon: 'https://play-lh.googleusercontent.com/4kF2IUQxdLs86iAVsmnHA1B34uO-dvtszKM8qzscc1InZb-2_JI0WANyOiWiV3qyNg',
       url: 'removebg',
-      flEstado: 1,
+      flEstado: 0,
     },
   ];
 

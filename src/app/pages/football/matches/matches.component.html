@@ -1,1 +1,54 @@
-<p>matches works!</p>
+<div *ngIf="isLoading" class="overlay">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Partidos de Hoy</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row" *ngIf="matches">
+      <table
+        class="table table-sm table-hover dataTable dtr-inline text-center"
+      >
+        <thead>
+          <th>Local</th>
+          <th></th>
+          <th>Visitante</th>
+        </thead>
+        <tbody *ngFor="let team of matches">
+          <td>
+            {{ team?.homeTeam.name }}
+            <img
+              [src]="team?.homeTeam.crest"
+              style="height: 32px; width: 32px"
+            />
+          </td>
+          <td>vs</td>
+          <td>
+            {{ team?.awayTeam.name }}
+            <img
+              [src]="team?.awayTeam.crest"
+              style="height: 32px; width: 32px"
+            />
+          </td>
+        </tbody>
+      </table>
+    </div>
+    <div class="card card-primary card-outline mt-1" *ngIf="!matches">
+      <div class="card-body px-3 py-3">
+        <div class="row justify-content-center">
+          <div class="alert" [ngClass]="alertClass">
+            {{ message }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,9 @@
 <app-navbar></app-navbar>
-
-<section class="content-header">
+<div *ngIf="isLoading" class="overlay">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+<br>
+<!-- <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
@@ -10,75 +13,123 @@
     <div class="row mb-2">
       <mat-form-field class="col-sm-2">
         <mat-label>Ciudad:</mat-label>
-        <input matInput [(ngModel)]="city" required readonly />
+        <input matInput [(ngModel)]="city" required />
       </mat-form-field>
       <div class="col-sm-2">
         <button class="btn btn-primary" (click)="getCurrentWeather()">
           Buscar
         </button>
       </div>
-      <p>{{ weather }}</p>
     </div>
   </div>
-</section>
+</section> -->
 
-<section class="content">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Clima Actual</h3>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <mat-form-field class="col-sm-12">
+              <mat-label>Ciudad:</mat-label>
+              <input
+                matInput
+                [(ngModel)]="city"
+                required
+                class="form-control"
+              />
+            </mat-form-field>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn btn-primary" (click)="getCurrentWeather()">
+              Buscar
+            </button>
+          </div>
+          <div *ngIf="weather">
+            <h4>
+              {{ weather?.location.name }}, {{ weather?.location.region }},
+              {{ weather?.location.country }}
+            </h4>
+            <div class="text-center">
+              <img
+                [src]="weather?.current.condition.icon"
+                alt="{{ weather?.current.condition.text }}"
+              />
+            </div>
+            <p>
+              <strong>Temperatura:</strong> {{ weather?.current.temp_c }} °C
+            </p>
+            <p>
+              <strong>Condición:</strong> {{ weather?.current.condition.text }}
+            </p>
+            <p><strong>Humedad:</strong> {{ weather?.current.humidity }}%</p>
+            <p>
+              <strong>Viento:</strong> {{ weather?.current.wind_kph }} kph ({{
+                weather?.current.wind_dir
+              }})
+            </p>
+            <p>
+              <strong>Presión:</strong> {{ weather?.current.pressure_mb }} mb
+            </p>
+            <p>
+              <strong>Visibilidad:</strong> {{ weather?.current.vis_km }} km
+            </p>
+            <p><strong>Índice UV:</strong> {{ weather?.current.uv }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="content" *ngIf="false">
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-3 col-6">
         <div class="small-box bg-info">
           <div class="inner">
-            <h3>25°C</h3>
+            <h3>{{ weather?.current.temp_c }}°C</h3>
             <p>Current Temperature</p>
           </div>
           <div class="icon">
             <i class="fas fa-thermometer-half"></i>
           </div>
-          <a href="#" class="small-box-footer"
-            >More info <i class="fas fa-arrow-circle-right"></i
-          ></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
         <div class="small-box bg-success">
           <div class="inner">
-            <h3>60%</h3>
+            <h3>{{ weather?.current.humidity }}%</h3>
             <p>Humidity</p>
           </div>
           <div class="icon">
             <i class="fas fa-tint"></i>
           </div>
-          <a href="#" class="small-box-footer"
-            >More info <i class="fas fa-arrow-circle-right"></i
-          ></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
         <div class="small-box bg-warning">
           <div class="inner">
-            <h3>15 km/h</h3>
+            <h3>{{ weather?.current.gust_kph }} km/h</h3>
             <p>Wind Speed</p>
           </div>
           <div class="icon">
             <i class="fas fa-wind"></i>
           </div>
-          <a href="#" class="small-box-footer"
-            >More info <i class="fas fa-arrow-circle-right"></i
-          ></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
         <div class="small-box bg-danger">
           <div class="inner">
-            <h3>1015 hPa</h3>
+            <h3>{{ weather?.current.pressure_in }} hPa</h3>
             <p>Pressure</p>
           </div>
           <div class="icon">
             <i class="fas fa-tachometer-alt"></i>
           </div>
-          <a href="#" class="small-box-footer"
-            >More info <i class="fas fa-arrow-circle-right"></i
-          ></a>
         </div>
       </div>
     </div>
@@ -99,6 +150,7 @@
             </div>
           </div>
           <div class="card-body">
+            <img [src]="weather?.current.condition.icon" alt="" />
             <canvas
               id="temperatureChart"
               style="
